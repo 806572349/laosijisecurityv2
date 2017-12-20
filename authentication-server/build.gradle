@@ -1,0 +1,26 @@
+
+
+
+subprojects{
+    //打包
+    jar {
+        manifest {
+            attributes("Implementation-Title": "Gradle")
+            attributes 'Main-Class': 'com.yunbao.security.AuthenticaitonApp'
+//			attributes "Main-Class": "$mainClassName"
+        }
+        from {
+            configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        }
+    }
+}
+
+
+
+dependencies{
+    compile project(':security-app')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '1.5.9.RELEASE'
+
+}
+

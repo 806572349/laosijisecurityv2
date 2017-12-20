@@ -1,0 +1,61 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.9.RELEASE'
+	}
+	repositories {
+		jcenter()
+		mavenCentral()
+		maven { url "http://106.14.35.171:8081/nexus/content/repositories/spring-io/" }
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+allprojects {
+	apply plugin: 'java'
+	apply plugin: 'idea'
+	apply plugin: 'io.spring.dependency-management'
+	apply plugin: 'org.springframework.boot'
+
+	group = 'com.laosiji.security'
+	version = '0.0.1-SNAPSHOT'
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
+
+	repositories {
+		jcenter()
+		mavenCentral()
+		maven { url "http://106.14.35.171:8081/nexus/content/repositories/central/" }
+		maven { url "http://106.14.35.171:8081/nexus/content/repositories/spring-io/" }
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+	}
+
+
+	ext {
+		springCloudVersion = 'Edgware.RELEASE'
+		cossmmonssVersion='2.6'
+		collectionsVersion='3.2.2'
+		commonsbeanutilsVersion='1.9.3'
+		mysqlVersion='5.1.45'
+		lombokVersion='1.16.18'
+		jjwtVersion='0.9.0'
+	}
+	dependencies {
+		compile ("org.projectlombok:lombok:$lombokVersion")
+
+	}
+
+	dependencyManagement {
+		imports {
+			mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+		}
+	}
+
+
+}
+
+

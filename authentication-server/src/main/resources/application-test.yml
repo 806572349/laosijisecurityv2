@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/imooc?characterEncoding=utf8&useSSL=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  data:
+    mongodb:
+#      uri: mongodb://root:pass@127.0.0.1:27017/lsj
+      port: 27017
+      host: 139.199.86.67
+      username: laosiji
+      password: laosiji123laosiji
+      database: laosiji
+yunbao:
+  security:
+      appSecurityProperty:
+            client:
+                auth2Clients[0]:
+                    clientId: laosiji
+                    clientSecret: laosiji
+                    accessTokenValiditySeconds: 2500000
+                    refreshTokenValiditySeconds: 5000000
+                jwtkey: laosiji
+server:
+  port: 9090
